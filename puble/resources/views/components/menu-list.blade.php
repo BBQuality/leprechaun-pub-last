@@ -1,29 +1,37 @@
+
 @props(['groupedMenu'])
 
+@foreach($groupedMenu as $type => $categories)
+    <div class="menu-section {{ $type }}" data-type="{{ $type }}" >
 
-    @foreach($groupedMenu as $type => $categories)
-        @foreach($categories as $category => $items)   
-        <div id="menu-wrapper">
-            <h2>{{ $category }}</h2>
+        
+        @foreach($categories as $category => $items)
+            <div class="menu-category mb-6 {{ $category }}" data-category="{{ $type }}" >
                 
-                    @foreach($items as $item)
-                    <div class="breakfast menu-restaurant">
-                            <span class="clearfix">
-                                <a class="menu-title" href="#">{{ $item->title_ua }} ({{ $item->title_en }})</a>
-                                <span style="left:166px;right:44px;" class="menu-line"></span>              
-                        @if($item->variants->isNotEmpty())                             
-                                @foreach($item->variants as $variant)
-                                    <span class="menu-price">{{ $variant->output }} {{ $variant->volume }} - {{ $variant->price }} {{ $variant->currency }}</span>
-                                @endforeach
-                            
-                        @else
-                            <span class="menu-price">Ціна: {{ $item->price ?? 'Немає даних' }}</span>
-                        @endif
-                            </span>
-                        <span class="menu-subtitle">{{ $item->description_ua }}</span>                    
-                    </div> 
-                        @endforeach          
-        </div>
-        @endforeach
-    @endforeach
 
+                @foreach($items as $item)
+                    <div class="menu-restaurant p-4 border rounded-lg shadow-sm mb-4">
+                        <span class="block font-semibold text-lg">
+                            {{ $item->title_ua }} ({{ $item->title_en }})
+                        </span>
+                        
+                        <span class="text-sm text-gray-500">{{ $item->description_ua }}</span>
+
+                        @if($item->variants->isNotEmpty())
+                            <ul class="mt-2">
+                                @foreach($item->variants as $variant)
+                                    <li class="text-sm">
+                                        <span class="font-semibold">{{ $variant->output }} ({{ $variant->volume }}) – </span> 
+                                        <span class="text-yellow-600 font-semibold">{{ $variant->price }} {{ $variant->currency }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p class="text-sm text-gray-700 mt-2">Ціна: {{ $item->price ?? 'Немає даних' }}</p>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
+    </div>
+@endforeach

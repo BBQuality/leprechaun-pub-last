@@ -12,19 +12,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/icons/favicon-16x16.png') }}">
     <link rel="icon" type="image/ico" sizes="16x16" href="{{ asset('/icons/favicon.ico') }}">
     <link rel="manifest" href="{{ asset('/icons/site.webmanifest') }}">  
-
+    <link href="{{ asset('/resources/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/resources/css/custom.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        @vite(['resources/css/app.css', 'resources/css/custom.css'])
 </head>
-    <body class="block  bg-green-900 font-sans">
+    <body class="block" style="background-image: url({{ asset('./images/drk_hero.webp') }});">
         <div class="block">
             <x-header></x-header> 
-            <x-hero></x-hero>
+            
         </div>
-        <main class="block place-items-center">
-            <div class="container">
+        <main class="block">       
                 {{ $slot }}
-            </div>
         </main>
             <x-footer></x-footer>
     </body>

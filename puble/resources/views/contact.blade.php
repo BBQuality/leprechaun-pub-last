@@ -1,1 +1,3 @@
-<x-layout>contact</x-layout>
+<x-layout>
+    <x-geo></x-geo>
+</x-layout>

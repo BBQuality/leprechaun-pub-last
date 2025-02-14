@@ -1,5 +1,56 @@
 <style>
-    
+.btn__gld {
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: #ffedd3;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.btn__gld::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #ffc506;
+  transition: 0.5s ease;
+}
+
+.btn__gld:hover {
+  color: transparent;
+  transition-delay: 0.5s;
+}
+
+.btn__gld:hover::before {
+  width: 100%;
+}
+
+.btn__gld::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #ffc506;
+  transition: 0.4s ease;
+  z-index: 1;
+}
+
+.btn__gld:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+  position: absolute;
+  z-index: -1;
+}
+
 .title-h {
         font-size: 35px;
    color: #FFB03B;
@@ -106,169 +157,42 @@ ul
   }
   
 }
-
-.msg-row{
-  margin-top:56px;
-}
-.media-body, .media-left, .media-right
-{
-  display:table-cell; 
-  vertical-align: top;
-  
-}
-
-.bg-1
-{
-  background-color: #fecc17;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  
-}
-.bg-14
-{
-   background-color: #ccdb38;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-}
-.dark-blue
-{
-  color: #31364c;
-  font-size: 24px;
-    margin-top: 0;
-}
-.light-blue {
-    color: #9699a6;
-    font-size: 16px;
-    margin-bottom: 1px;
-}
-.media-body{
-  margin-left:10px;
-  padding-left:13px;
-}
-.media-2{
-  margin-top:30px;
-  
-}
-.form-group
-{
-  margin:8px 0 9px !important;
-  padding-bottom:10px;
-}
-.contact-form .form-control
-{
-  color:#000 !important;
-  font-size:16px;
-  font-weight:normal;
-  height:38px;
-line-height: 1.42857;
-  padding:7px 0;
-  
-}
-.form-control, .form-group .form-control {
-  border: 0;
-  background-image: -webkit-gradient(linear,left top,left bottom,from(#009688), to(#009688)),-webkit-gradient(linear, left top, left bottom, from(#D2D2D2), 
-    to(#D2D2D2));
-   background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
-  background-image: -o-linear-gradient(#009688, #009688), -o-linear-gradient(#D2D2D2, #D2D2D2);
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
-   -webkit-background-size: 0 2px, 100% 1px;
-  background-size:0 2px,100% 1px;
-  background-repeat: no-repeat;
-background-position: center bottom, center -webkit-calc(100% - 1px);
- background-position: center bottom, center calc(100% - 1px);
-   background-color: rgba(0, 0, 0, 0);
-    -webkit-transition: background 0s ease-out;
-    -o-transition: background 0s ease-out;
-    transition: background 0s ease-out;
-    float: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-radius: 0;
-  
-}
-.contact-form {
-    margin: 8px 0 9px !important;
-    padding-bottom: 10px;
-}
-.phone-in-talk, .hour-icon
-{
-    font-size: 35px;
-    line-height: 70px;
-    color: rgb(255, 255, 255);
-}
-
-.contact-form textarea.form-control {
-    color: #000 !important;
-    height: auto;
-}
-.contacts-btn {
-    background-color:  #FFB03B !important;
-    color: #ffffff !important;
-    width: 170px;
-    height: 54px;
-    border-radius: 3px;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-    text-transform: capitalize;
-    border: 0px;
-    color: #000 !important;
-}
-
-.validation {
-    color: red;
-    display:none;
-    margin: 0 0 20px;
-    font-weight:400;
-    font-size:13px;
-}
-
-#sendmessage {
-    color: green;
-    border:1px solid green;
-    display:none;
-    text-align:center;
-    padding:15px;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-#errormessage {
-    color: red;
-    display:none;
-    border:1px solid red;
-    text-align:center;
-    padding:15px;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-#sendmessage.show, #errormessage.show, .show {
-    display:block;
-}
 </style>
 <script>
-    (function($) {
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("#menu-filters li a").forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
 
-// Menu filter
-$("#menu-filters li a").click(function() {
-  $("#menu-filters li a").removeClass('active');
-  $(this).addClass('active');
+            // Видаляємо клас active у всіх посиланнях
+            document.querySelectorAll("#menu-filters li a").forEach(el => el.classList.remove("active"));
+            this.classList.add("active");
 
-  var selectedFilter = $(this).data("filter");
-  //  $("#menu-wrapper").fadeTo(100, 0);
+            // Отримуємо вибраний фільтр
+            let selectedFilter = this.getAttribute("data-filter");
 
-  $(".menu-restaurant").fadeOut();
+            // Ховаємо всі категорії
+            document.querySelectorAll(".menu-category").forEach(category => {
+                category.style.display = "none";
+            });
 
-  setTimeout(function() {
-    $(selectedFilter).slideDown();
-    //$("#menu-wrapper").fadeTo(300, 1);
-  }, 300);
+            // Показуємо лише вибрану категорію
+            document.querySelectorAll(`.menu-category[data-category="${selectedFilter}"]`).forEach(category => {
+                category.style.display = "block";
+            });
+        });
+    });
+
+    // Показати першу категорію при завантаженні сторінки
+    let firstFilter = document.querySelector("#menu-filters li a.active");
+    if (firstFilter) {
+        let defaultFilter = firstFilter.getAttribute("data-filter");
+        document.querySelectorAll(`.menu-category[data-category="${defaultFilter}"]`).forEach(category => {
+            category.style.display = "block";
+        });
+    }
 });
 
-})(jQuery);
 </script>
 <x-layout >
     <section id="menu-list" class="section-padding">
@@ -278,17 +202,16 @@ $("#menu-filters li a").click(function() {
                     <h1 class="title-h">Наше меню</h1>
                 </div>
                 <div class="col-md-12 text-center" id="menu-filters">
-                    <ul> 
-                        @foreach($groupedMenu as $type => $categories)
-                        <li>
-                            <a class="filter" data-filter=".menu-restaurant">
-                                {{ $type }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div> 
-                        
+    <ul> 
+        @foreach($groupedMenu as $type => $categories)
+            <li>
+                <a type="button" class="filter btn__gld{{ $type === 'eat' ? 'active' : '' }}" data-filter="{{ $type }}">
+                    {{ $type === 'eat' ? 'Їжа' : 'Напої' }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</div>
             <x-menu-list :groupedMenu="$groupedMenu" />
             </div>
         </div> 
