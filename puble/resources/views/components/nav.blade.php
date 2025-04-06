@@ -1,12 +1,8 @@
 @php
 $items = [
     route('index') => 'Головна',
-    route('menu') => 'Наше Меню',
     route('contact') => 'Контакти',
-    route('login') => 'Log in',
-    route('register') => 'Реєстрація',
-    route('policy') => 'Юридична інформація',
-    route('terms') => 'Обов`язки',
+    route('account') => 'Log in',
 ];
 @endphp
 

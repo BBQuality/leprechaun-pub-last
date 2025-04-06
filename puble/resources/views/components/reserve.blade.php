@@ -199,39 +199,69 @@
 </style>
 
 <div class="box"> 
-<form class="form">
-    
+<form class="form" action="{{ route('contact.submit') }}" method="POST">
+  @csrf
     <div class="flex">
-        <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>first name</span>
+        <label for="first_name">
+            <input class="input" type="text" type="text" id="first_name" name="first_name" placeholder="Ваше ім'я" required>
+            <span>Ваше ім'я</span>
         </label>
 
-        <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>last name</span>
+        <label for="last_name">
+            <input class="input" type="text" type="text" id="last_name" name="last_name" placeholder="Ваше прізвище" required>
+            <span>Ваше прізвище</span>
         </label>
     </div>  
             
-    <label>
-        <input required="" placeholder="" type="email" class="input">
+    <label for="email">
+        <input class="input" type="email" id="email" name="email" placeholder="email" required>
         <span>email</span>
     </label> 
         
-    <label>
-        <input required="" type="tel" placeholder="" class="input">
-        <span>contact number</span>
+    <label for="phone">
+        <input class="input" type="tel" id="phone" name="phone" placeholder="Номер телефону" required>
+        <span>Контактний номер</span>
     </label>
-    <label>
-        <textarea required="" rows="3" placeholder="" class="input01"></textarea>
-        <span>message</span>
+    <label for="message">
+        <textarea class="input01" rows="3" id="message" name="message" placeholder="Ваше повідомлення тут..." required></textarea>
+        <span>Повідомлення</span>
     </label>
     
-    <button class="fancy" href="#">
+    <button class="fancy" type="submit">
       <span class="top-key"></span>
-      <span class="text">submit</span>
+      <span class="text">Надіслати</span>
       <span class="bottom-key-1"></span>
       <span class="bottom-key-2"></span>
     </button>
 </form>
+
+@if (session('success'))
+    <p style="color: green;">{{ session('success') }}</p>
+@endif
+
+@if ($errors->any())
+    <ul style="color: red;">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
 </div>
+
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let formData = new FormData(this);
+
+    fetch('/contact', {
+        method: 'POST',
+        body: formData,
+        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+    })
+    .then(response => response.json())
+    .then(data => document.getElementById('feedbackMessage').textContent = data.message)
+    .catch(error => console.error('Error:', error));
+});
+</script>

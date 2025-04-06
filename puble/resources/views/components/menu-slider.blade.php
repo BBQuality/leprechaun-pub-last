@@ -27,7 +27,7 @@
     align-content: center;
     flex-wrap: wrap;
     column-gap: 2px;
-    border-radius: 10% 12% 31% 18%;
+    border-radius: 0% 0% 0% 0%;
 }
 
 .coursemeal__div {
@@ -40,7 +40,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border-radius: 6% 6% 60% 8%;
+    border-radius: 20% 20% 20% 20%;
 }
 
 .coursemeal-info {

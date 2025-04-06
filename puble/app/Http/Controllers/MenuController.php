@@ -15,7 +15,7 @@ class MenuController extends Controller
         // Групуємо спочатку за 'type' (їжа, напої), потім за 'category_ua' (категорія всередині)
         $groupedMenu = $menuItems->groupBy(['type', 'category_ua']);
     
-        return view('menu', compact('groupedMenu'));
+        return view('index', compact('groupedMenu'));
     }
     
 }

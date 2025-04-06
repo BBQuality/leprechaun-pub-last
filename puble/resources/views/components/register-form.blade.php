@@ -6,17 +6,17 @@
         <form>
             <div>
                 <label class="block font-semibold" for="name">Name</label>
-                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="name" type="text" name="name" required="required" autofocus="autofocus">
+                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1" id="name" type="text" name="name" required="required" autofocus="autofocus">
             </div>
 
             <div class="mt-4">
                 <label class="block font-semibold" for="email">Email</label>
-                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="email" type="email" name="email" required="required">
+                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1" id="email" type="email" name="email" required="required">
             </div>
 
             <div class="mt-4">
                 <label class="block font-semibold" for="password">Password</label>
-                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="password" type="password" name="password" required="required" autocomplete="new-password">
+                <input class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1" id="password" type="password" name="password" required="required" autocomplete="new-password">
             </div>
 
             <div class="flex items-center justify-between mt-8">
@@ -40,4 +40,5 @@
 
     </div>
 </div>
+
 </x-layout>
