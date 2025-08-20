@@ -1,0 +1,44 @@
+
+
+        <!-- <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Про нас</h2>
+                    <p class="text-gray-700 mb-4">Наш паб — це місце, де ви можете насолодитися справжньою британською атмосферою. Ми пропонуємо широкий вибір традиційних страв та напоїв, які привезені прямо з Великобританії.</p>
+                    <p class="text-gray-700">Наші кухарі готують страви за старовинними рецептами, а наші бармени знають, як приготувати ідеальний коктейль.</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/600x400" alt="Про нас" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div> -->
+
+          <!-- Mobile Menu Button
+          <div class="lg:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-green-400 hover:text-green-600 focus:outline-none">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+          </div>
+        </div>
+      </div>  
+      
+
+      Mobile Menu 
+      <div id="mobile-menu" class="absolute inset-0 bg-[#111111] bg-opacity-50 z-50 hidden">
+        <div class="fixed inset-y-0 left-0 bg-[#111111] w-64 p-6 transform -translate-x-full transition-transform">
+          <button id="close-menu-button" class="text-green-400 hover:text-green-600 focus:outline-none mb-4">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+          <nav class="space-y-4">
+            <a href="#about" class="block text-green-400 hover:text-green-400">About</a>
+            <a href="#what-i-do" class="block text-gray-400 hover:text-green-400">What I Do</a>
+            <a href="#testimonials" class="block text-gray-400 hover:text-green-400">Testimonials</a>
+            <a href="#clients" class="block text-gray-400 hover:text-green-400">Clients</a>
+            <a href="#fun-facts" class="block text-gray-400 hover:text-green-400">Fun Facts</a>
+          </nav>
+
+-->
