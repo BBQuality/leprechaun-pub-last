@@ -8,12 +8,12 @@ class MenuController extends Controller
 {
     public function index()
     {
-         $categories = \App\Models\MenuCategory::with(['items.variants'])->get();
+        // Завантажуємо категорії разом з позиціями та варіантами
+        $categories = MenuCategory::with(['items.variants'])->get();
 
-    // Групуємо по типу
-    $groupedMenu = $categories->groupBy('type');
-    // де 'type' у таблиці menu_categories: eat | drink
+        // Групуємо по типу
+        $groupedMenu = $categories->groupBy('type');
 
-    return view('index', compact('groupedMenu'));
+        return view('index', compact('groupedMenu'));
     }
 }
