@@ -1,13 +1,11 @@
 @props(['type', 'categories'])
 
 <div class="menu-section grid gap-6 {{ $type }}" data-type="{{ $type }}">
-    <h2 class="text-2xl font-bold text-gray-800 capitalize">{{ $type }}</h2>
-
     @foreach($categories as $category)
         <div class="menu-category mb-6 {{ $category->slug }}" data-category="{{ $type }}">
-            <h3 class="text-xl font-semibold text-gray-700 capitalize mb-4">
+            <h2 class="text-2xl font-bold text-gray-800 capitalize">
                 {{ $category->title_ua }} ({{ $category->title_en }})
-            </h3>
+            </h2>
 
             <div class="menu-items grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach($category->items as $item)

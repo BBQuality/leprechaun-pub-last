@@ -140,15 +140,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div class="col-md-12 text-center" id="menu-filters">
                 <ul>
-                  @foreach($groupedMenu as $type => $categories)
-                        <li>
-                            <a type="button"
-                               class="filter btn__gld {{ $type === 'eat' ? 'active' : '' }}"
-                               data-filter="{{ $type }}">
-                                {{ $type === 'eat' ? 'Їжа' : 'Напої' }}
-                            </a>
-                        </li>
-                  @endforeach
+@foreach($groupedMenu as $type => $categories)
+    <li>
+        <a type="button"
+           class="filter btn__gld {{ $type === 'food' ? 'active' : '' }}"
+           data-filter="{{ $type }}">
+            {{ $categories[0]['title_ua'] ?? $type }}
+        </a>
+    </li>
+@endforeach
                 </ul>
             </div>
 
