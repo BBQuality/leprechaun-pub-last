@@ -1,2 +1,3 @@
 import './bootstrap';
-import 'resources/css/custom.css';
+import '../css/custom.css';
+import '../css/filament.css';

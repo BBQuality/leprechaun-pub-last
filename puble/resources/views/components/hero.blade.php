@@ -1,22 +1,18 @@
 <style>
 
-/* Основні стилі для секції Hero */
+/* === Hero === */
 .hero {
-  background-size: contain;
-        background-position: center;
-        text-align: center;
-        padding: 5rem 0;
-        position: relative;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 1rem;
+  text-align: center;
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
 }
 
 .hero-content {
@@ -37,24 +33,33 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.hero .btn__gld {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #ffb03b;
-    color: #fff;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-transform: uppercase;
-    font-weight: bold;
+.btn__gld {
+  position: relative;
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--clr-light);
+  border: 2px solid var(--clr-accent);
+  border-radius: 30px;
+  background: transparent;
+  text-transform: uppercase;
+  transition: all .3s ease;
+  cursor: pointer;
 }
 
-.hero .btn__gld:hover {
-    background-color: #e09e2b;
-    transform: scale(1.05);
+.btn__gld:hover,
+.btn__gld:focus {
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  box-shadow: 0 0 12px rgba(255,176,59,0.7);
 }
+
+/* === Кнопки === */
+
 
 .serve {
- 
+
         position: absolute;
         right: 0px;
         z-index: 4;
@@ -201,18 +206,18 @@
             <div class="main">
                 <div class="up">
                     <button class="card1">
-                        
+
                     </button>
                     <button class="card2">
-                        
+
                     </button>
                 </div>
                 <div class="down">
                     <button class="card3">
-                        
+
                     </button>
                     <button class="card4">
-                        
+
                     </button>
                 </div>
             </div>

@@ -8,16 +8,16 @@ $items = [
 
 
 
-<div class="box"> 
-    
+<div class="box">
 
- <nav>
+
+ <nav id="menu-filters">
     <ul class="flex-column gap-4">
         <li>
         @foreach ($items as $href => $label)
             <x-nav-item :$href>{{ $label }}</x-nav-item>
         @endforeach
-        </li>                
+        </li>
     </ul>
-</nav> 
+</nav>
 </div>

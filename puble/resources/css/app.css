@@ -3,4 +3,4 @@
 @tailwind utilities;
 
 /* Імпорт кастомного стилю */
-@import 'custom.css';
+@import './custom.css';

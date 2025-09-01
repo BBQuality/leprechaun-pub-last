@@ -11,40 +11,24 @@ $items_auth = [
 
 <style>
 /* Загальні стилі для header */
-.header {
-    background-color: #065f46; /* Темно-зелений фон */
-    color: #fff;
-    border-bottom: 4px solid #ffb03b;
-    padding: 1rem 0;
-}
+/* === Header === */
 
 .header-container {
-        display: flex;
-        align-items: center;
-        max-width: 1600px;
-        margin: 16px auto;
-        padding: 0px 1rem;
-        flex-direction: row;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        align-content: stretch;
-}
-
-/* Логотип */
-.header-logo {
-    display: flex;
-    align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-logo span {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #fbbf24; /* Жовтий фон */
-    border: 2px dashed #065f46;
-    border-radius: 50%;
-    color: #065f46;
-    font-size: 1.5rem;
-    font-weight: bold;
+  background: var(--clr-accent);
+  color: var(--clr-primary);
+  padding: .5rem 1rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 /* Пошук */
@@ -69,27 +53,21 @@ $items_auth = [
     border-color: #fbbf24;
 }
 
-/* Меню */
-#menu {
-    display: flex;
-    gap: 1.5rem;
-}
-
+/* === Меню === */
 #menu ul {
-    display: flex;
-    gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
 #menu ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+  color: var(--clr-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s;
 }
 
 #menu ul li a:hover {
-    color: #ffb03b; /* Жовтий при наведенні */
+  color: var(--clr-accent);
 }
 
 /* Мобільне меню */
@@ -136,8 +114,8 @@ $items_auth = [
 
         <!-- Меню -->
         <div id="menu">
-            <nav>
-                <ul class="flex items-center space-x-6">
+            <div>
+                <ul class="btn__gld flex items-center space-x-6">
                     @foreach ($items as $href => $label)
                         <x-nav-item :$href>{{ $label }}</x-nav-item>
                     @endforeach
@@ -145,7 +123,7 @@ $items_auth = [
                         <x-nav-item :$href>{{ $label }}</x-nav-item>
                     @endforeach
                 </ul>
-            </nav>
+            </div>
         </div>
     </div>
 

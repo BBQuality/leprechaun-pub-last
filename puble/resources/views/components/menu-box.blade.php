@@ -1,69 +1,64 @@
 <style>
-.title-h {
-        font-size: 35px;
-        font-family: 'Lobster', cursive;
-    font-weight: normal;
-    color: #065f46; /* Темно-зелений колір для заголовків */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Легка тінь для акценту */
-    }
-
-ul
-{
-  list-style:none;
-}
-.title-p {
-  color:#9699a6;
-  font-size:16px;
-}
-.section-padding{
-    padding: 60px 0px;
-}
-.marb-35{
-  margin-bottom:35px;
+/* === Menu items === */
+.menu-container {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(0,0,0,0.7);
+  border-radius: 12px;
 }
 
-.menu-restaurant .menu-title
-{
-  float:left;
-  font-family:Montserrat,arial;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#FFB03B;
-  }
-.menu-restaurant .menu-line
-{
-  position: absolute;
-  bottom:6px;
-  border-bottom:1px dotted rgba(0,0,0,.3);
-  margin-left: .6em;
-  margin-right: .6em;
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1.5rem;
+}
 
+.menu-restaurant {
+    background: linear-gradient(145deg, #251e00, #3a2e00);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.menu-restaurant .menu-price{
-  font-weight:600;
-  position:absolute;
-  right:0;
-  top:0;
 
+.menu-restaurant:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
-.menu-restaurant .menu-subtitle
-{
-  display:block;
-  float:left;
-  color:#B1B1B1;
-   font-family: Satisfy,'Open Sans',arial;
-    font-size: 1.2rem;
+
+.menu-card {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b); /* жовто-помаранчевий */
+    color: #fff; /* світлий текст */
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.menu-restaurant span.clearfix{
-  position:relative;
-  display:block;
+
+.menu-card h3 {
+    color: #fff;
 }
-#menu-filters ul li a.active, #menu-filters ul li a:hover
-{
-  background: #FFB03B;
-  color:#fff;
-  border:1px solid #FFB03B;
+
+.menu-card p {
+    color: #fef9c3; /* блідий жовто-білий для відтінку */
 }
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.menu-title {
+  font-size: 1.25rem;
+  color: var(--clr-accent);
+  margin-bottom: .25rem;
+}
+
+.menu-subtitle {
+  font-size: .95rem;
+  color: var(--clr-muted);
+}
+
 #menu-filters ul li
 {
   display:inline-block;
@@ -72,15 +67,14 @@ ul
   letter-spacing:1px;
   margin-botttom:40px;
 }
-#menu-filters ul li a
-{
-  padding:10px 20px;
-  font-size:14px;
-  color:#565656;
-  border-radius:0px;
-  border:1px solid #BBBBBB;
-  text-decoration:none;
-  cursor:pointer;
+#menu-filters ul li a {
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+#menu-filters ul li a:hover,
+#menu-filters ul li a.active {
+    background: #FFB03B;
+    color: #fff;
 }
 
 .menu-info {
@@ -91,7 +85,10 @@ ul
 .menu-text {
   padding-top: 20px;
 }
+
+
 </style>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("#menu-filters li a").forEach(link => {
@@ -138,22 +135,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3 class="title-h">Наше меню</h3>
             </div>
 
+            {{-- Фільтри по типах --}}
             <div class="col-md-12 text-center" id="menu-filters">
-                <ul>
-@foreach($groupedMenu as $type => $categories)
-    <li>
-        <a type="button"
-           class="filter btn__gld {{ $type === 'food' ? 'active' : '' }}"
-           data-filter="{{ $type }}">
-            {{ $categories[0]['title_ua'] ?? $type }}
-        </a>
-    </li>
-@endforeach
+                <ul class="flex flex-wrap justify-center gap-4">
+                    @foreach($groupedMenu as $type => $categories)
+                        <li>
+                            <a type="button"
+                               class="btn__gld {{ $loop->first ? 'active' : '' }}"
+                               data-filter="{{ $type }}">
+                                {{ $categories[0]['title_ua'] ?? ucfirst($type) }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
+            {{-- Вивід категорій --}}
             @foreach($groupedMenu as $type => $categories)
-                <div class="menu-container grid gap-8 p-6 bg-gray-100 rounded-lg shadow-md menu-category" data-category="{{ $type }}" style="display: none;">
+                <div class="menu-container grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6
+                            bg-white rounded-2xl shadow-md menu-category
+                            transition-all duration-300"
+                     data-category="{{ $type }}"
+                     style="{{ $loop->first ? '' : 'display: none;' }}">
                     <x-menu-list :type="$type" :categories="$categories" />
                 </div>
             @endforeach

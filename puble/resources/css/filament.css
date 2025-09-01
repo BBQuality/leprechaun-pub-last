@@ -1,0 +1,82 @@
+/* =======================
+   Заголовки сторінок
+======================= */
+.filament-page-heading {
+    @apply text-lg font-semibold tracking-tight mb-2;
+}
+
+/* =======================
+   Таблиці ресурсів
+======================= */
+.filament-tables-table {
+    @apply text-sm;
+}
+
+.filament-tables-table th,
+.filament-tables-table td {
+    @apply py-1 px-2;
+}
+
+.filament-tables-actions button {
+    @apply px-2 py-1 text-xs;
+}
+
+/* =======================
+   Sidebar
+======================= */
+.filament-sidebar {
+    @apply w-56;
+}
+
+.filament-sidebar-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* =======================
+   Картки ресурсів (Cards)
+======================= */
+.filament-resources-card {
+    @apply p-4 rounded-lg shadow-sm border border-gray-200;
+}
+
+.filament-resources-card-header {
+    @apply text-base font-semibold mb-2;
+}
+
+/* =======================
+   Форма ресурсів
+======================= */
+.filament-forms-fieldset .filament-forms-field-wrapper {
+    @apply mb-2;
+}
+
+.filament-forms-input,
+.filament-forms-textarea {
+    @apply text-sm px-2 py-1;
+}
+
+.filament-forms-fieldset button {
+    @apply text-sm px-3 py-1.5;
+}
+
+/* =======================
+   Кнопки на сторінках ресурсів
+======================= */
+.filament-button {
+    @apply text-sm px-3 py-1.5 rounded-md;
+}
+
+/* =======================
+   Модальні вікна
+======================= */
+.filament-modal {
+    @apply p-4 rounded-lg shadow-lg;
+}
+
+/* =======================
+   Фільтри та search
+======================= */
+.filament-tables-header {
+    @apply py-2 px-2 space-x-2;
+}
