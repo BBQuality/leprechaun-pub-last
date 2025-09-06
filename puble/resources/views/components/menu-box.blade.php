@@ -129,8 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
 @props(['groupedMenu'])
 
 <section id="menu-list" class="section-padding">
-    <div class="block">
-        <div class="row">
             <div class="col-md-12 text-center marb-35">
                 <h3 class="title-h">Наше меню</h3>
             </div>
@@ -152,14 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             {{-- Вивід категорій --}}
             @foreach($groupedMenu as $type => $categories)
-                <div class="menu-container grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6
-                            bg-white rounded-2xl shadow-md menu-category
-                            transition-all duration-300"
+                <div class="menu-container grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 rounded-2xl shadow-md menu-category transition-all duration-300"
                      data-category="{{ $type }}"
                      style="{{ $loop->first ? '' : 'display: none;' }}">
                     <x-menu-list :type="$type" :categories="$categories" />
                 </div>
             @endforeach
-        </div>
-    </div>
 </section>

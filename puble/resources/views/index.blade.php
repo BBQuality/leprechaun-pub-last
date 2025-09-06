@@ -32,11 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
 </script>
 
-<x-layout>
-    <x-about></x-about>
+{{-- Передаємо slides у компонент layout --}}
+<x-layout :slides="$slides">
+
+<x-line-img></x-line-img>
     <div class="flex justify-center" style="background-image: url({{ asset('./images/drk_hero.webp') }}); border-top: solid 2px #ffb03b;">
         @if(isset($groupedMenu) && $groupedMenu->isNotEmpty())
             <x-menu-box :groupedMenu="$groupedMenu" />
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="text-center text-gray-500">Меню наразі недоступне.</p>
         @endif
     </div>
-        <x-line-img></x-line-img>
+    <x-about></x-about>
+    <x-line-img></x-line-img>
     <x-geo></x-geo>
 </x-layout>
-

@@ -1,7 +1,7 @@
 <style>
     .logo__long {
-        mun-width: 140px!important;
-        max-width: 280px!important;
+        min-width: 140px!important;
+        max-width: 680px!important;
         height: auto!important;
         max-height: -webkit-fill-available!important;
     }
