@@ -9,124 +9,37 @@ $items_auth = [
 ];
 @endphp
 
-<style>
-/* Загальні стилі для header */
-/* === Header === */
-
-.header-container {
-  max-width: 1980px;
-  margin: auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-logo span {
-  background: var(--clr-accent);
-  color: var(--clr-primary);
-  padding: 1.5rem 1rem;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Пошук */
-.header-search {
-    flex: 1;
-    margin: 0 2rem;
-    display: flex;
-    justify-content: center;
-}
-
-.header-search input {
-    width: 100%;
-    max-width: 400px;
-    padding: 0.5rem 1rem;
-    border: 2px solid #ffb03b;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    outline: none;
-}
-
-.header-search input:focus {
-    border-color: #fbbf24;
-}
-
-/* === Меню === */
-#menu ul {
-  display: flex;
-  gap: 1.5rem;
-}
-
-#menu ul li a {
-  color: var(--clr-light);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .3s;
-}
-
-#menu ul li a:hover {
-  color: var(--clr-accent);
-}
-
-/* Мобільне меню */
-#menu-toggle:checked + #menu {
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header-search {
-        margin: 1rem 0;
-    }
-
-    #menu {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-
-    #menu ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-</style>
-
-<div class="header">
-
-        <header class="w-full bg-transparent text-white">
-  <div class="container mx-auto flex items-center justify-between py-4">
+<header class="site-header relative bg-gradient-to-r from-transparent via-green-900 to-transparent text-white border-b-4 border-yellow-400 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
 
     <!-- Left: Contacts -->
-    <div class="flex flex-col text-sm">
-      <a href="mailto:info@pub-leprekon.com" class="text-yellow-400 hover:text-yellow-500">
+    <div class="flex flex-col text-sm md:text-base text-left">
+      <a href="mailto:info@pub-leprekon.com" class="text-yellow-400 hover:text-yellow-500 transition">
         info@pub-leprekon.com
       </a>
-      <a href="tel:+380965776303" class="text-yellow-400 hover:text-yellow-500">
+      <a href="tel:+380965776303" class="text-yellow-400 hover:text-yellow-500 transition">
         +380 96 577 6303
       </a>
     </div>
 
     <!-- Center: Navigation + Logo -->
     <nav class="flex items-center gap-6">
-      <ul class="flex gap-6 font-medium tracking-wide text-sm uppercase">
+      <!-- Left menu -->
+      <ul class="flex gap-4 font-medium tracking-wide text-sm uppercase">
         <li><a href="#home" class="hover:text-yellow-400">Home</a></li>
         <li><a href="#about" class="hover:text-yellow-400">About</a></li>
         <li><a href="#menu" class="hover:text-yellow-400">Menu</a></li>
       </ul>
 
-        <div class="header-logo">
-            <span class="py-2 px-4 text-4xl font-semibold text-green-700">
-                <x-lg-logo></x-lg-logo>
-            </span>
-        </div>
-      <ul class="flex gap-6 font-medium tracking-wide text-sm uppercase">
+      <!-- Logo -->
+      <div class="header-logo">
+        <span class="inline-flex items-center justify-center rounded-full bg-yellow-400 text-green-900 w-16 h-16 shadow-md border-4 border-white/20">
+          <x-lg-logo></x-lg-logo>
+        </span>
+      </div>
+
+      <!-- Right menu -->
+      <ul class="flex gap-4 font-medium tracking-wide text-sm uppercase">
         <li><a href="#gallery" class="hover:text-yellow-400">Gallery</a></li>
         <li><a href="#events" class="hover:text-yellow-400">Events</a></li>
         <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
@@ -134,17 +47,24 @@ $items_auth = [
     </nav>
 
     <!-- Right: Socials -->
-    <div class="flex gap-2" style="justify-content: end;">
- <a href="https://www.instagram.com/lepreconpub" class="hover:text-yellow-500">
-                    <svg class="w-8 h-8 fill-green-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.88"><title>Instagram</title><path d="M61.45,0C44.76,0,42.66.07,36.11.37A45.08,45.08,0,0,0,21.2,3.23a29.86,29.86,0,0,0-10.88,7.08,30.26,30.26,0,0,0-7.1,10.88A44.92,44.92,0,0,0,.37,36.11C.08,42.66,0,44.75,0,61.44S.07,80.21.37,86.77a45.08,45.08,0,0,0,2.86,14.91,30.12,30.12,0,0,0,7.08,10.88,30.13,30.13,0,0,0,10.88,7.1,45.17,45.17,0,0,0,14.92,2.85c6.55.3,8.64.37,25.33.37s18.77-.07,25.33-.37a45.17,45.17,0,0,0,14.92-2.85,31.54,31.54,0,0,0,18-18,45.6,45.6,0,0,0,2.86-14.91c.29-6.55.37-8.64.37-25.33s-.08-18.78-.37-25.33a45.66,45.66,0,0,0-2.86-14.92,30.1,30.1,0,0,0-7.09-10.88,29.77,29.77,0,0,0-10.88-7.08A45.14,45.14,0,0,0,86.76.37C80.2.07,78.12,0,61.43,0ZM55.93,11.07h5.52c16.4,0,18.34.06,24.82.36a34,34,0,0,1,11.41,2.11,19,19,0,0,1,7.06,4.6,19.16,19.16,0,0,1,4.6,7.06,34,34,0,0,1,2.11,11.41c.3,6.47.36,8.42.36,24.82s-.06,18.34-.36,24.82a33.89,33.89,0,0,1-2.11,11.4A20.35,20.35,0,0,1,97.68,109.3a33.64,33.64,0,0,1-11.41,2.12c-6.47.3-8.42.36-24.82.36s-18.35-.06-24.83-.36a34,34,0,0,1-11.41-2.12,19,19,0,0,1-7.07-4.59,19,19,0,0,1-4.59-7.06,34,34,0,0,1-2.12-11.41c-.29-6.48-.35-8.42-.35-24.83s.06-18.34.35-24.82a33.7,33.7,0,0,1,2.12-11.41,19,19,0,0,1,4.59-7.06,19.12,19.12,0,0,1,7.07-4.6A34.22,34.22,0,0,1,36.62,11.4c5.67-.25,7.86-.33,19.31-.34Zm38.31,10.2a7.38,7.38,0,1,0,7.38,7.37,7.37,7.37,0,0,0-7.38-7.37ZM61.45,29.89A31.55,31.55,0,1,0,93,61.44,31.56,31.56,0,0,0,61.45,29.89Zm0,11.07A20.48,20.48,0,1,1,41,61.44,20.48,20.48,0,0,1,61.45,41Z"/></svg>
-                </a>
-                <a href="https://www.facebook.com/grillpubleprekon" class="hover:text-yellow-500">
-                    <svg class="w-8 h-8 fill-green-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><title>Facebook</title><path d="M380.001 120.001h99.993V0h-99.993c-77.186 0-139.986 62.8-139.986 139.986v60h-80.009V320h79.985v320h120.013V320h99.994l19.996-120.013h-119.99v-60.001c0-10.843 9.154-19.996 19.996-19.996v.012z"/></svg>
-                </a>
+    <div class="flex items-center gap-3 ml-auto">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/lepreconpub"
+         class="w-8 h-8 flex items-center justify-center rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-green-900 transition duration-300 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+        </svg>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/grillpubleprekon"
+         class="w-8 h-8 flex items-center justify-center rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-green-900 transition duration-300 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.004 3.657 9.128 8.438 9.878v-6.988h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 17.004 22 12"/>
+        </svg>
+      </a>
     </div>
 
   </div>
 </header>
-
-
-</div>
+ф
