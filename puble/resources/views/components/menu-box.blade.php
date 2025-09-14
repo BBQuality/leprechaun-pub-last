@@ -3,7 +3,7 @@
 .menu-container {
   display: grid;
   gap: 2rem;
-  padding: 2rem;
+  padding: 3rem;
   background: rgba(0,0,0,0.7);
   border-radius: 12px;
 }
@@ -26,55 +26,15 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
-.menu-card {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b); /* жовто-помаранчевий */
-    color: #fff; /* світлий текст */
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    padding: 1.5rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.menu-card h3 {
-    color: #fff;
-}
-
-.menu-card p {
-    color: #fef9c3; /* блідий жовто-білий для відтінку */
-}
-
-.menu-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-}
-
 .menu-title {
-  font-size: 1.25rem;
-  color: var(--clr-accent);
-  margin-bottom: .25rem;
+  font-size: 4.25rem;
+  color: yellowgreen;
+  margin-bottom: 1.25rem;
 }
 
 .menu-subtitle {
   font-size: .95rem;
   color: var(--clr-muted);
-}
-
-#menu-filters ul li
-{
-  display:inline-block;
-  color:#fff;
-  text-transform:capitalize;
-  letter-spacing:1px;
-  margin-botttom:40px;
-}
-#menu-filters ul li a {
-    border-radius: 8px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-#menu-filters ul li a:hover,
-#menu-filters ul li a.active {
-    background: #FFB03B;
-    color: #fff;
 }
 
 .menu-info {
@@ -83,7 +43,25 @@
 }
 
 .menu-text {
-  padding-top: 20px;
+  padding-top: 10px;
+}
+
+#menu-filters ul li{
+  display:inline-block;
+  color: mediumseagreen;
+  text-transform:capitalize;
+  letter-spacing:1px;
+  margin-botttom:24px;
+}
+
+#menu-filters ul li a {
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+#menu-filters ul li a:hover,
+#menu-filters ul li a.active {
+    background: #376315;
+    color: #dfe194;
 }
 
 
@@ -128,32 +106,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 @props(['groupedMenu'])
 
-<section id="menu-list" class="section-padding">
-            <div class="col-md-12 text-center marb-35">
-                <h3 class="title-h">Наше меню</h3>
-            </div>
+<section id="menu-list" class="section-padding" style="z-index: 20;">
 
-            {{-- Фільтри по типах --}}
-            <div class="col-md-12 text-center" id="menu-filters">
-                <ul class="flex flex-wrap justify-center gap-4">
-                    @foreach($groupedMenu as $type => $categories)
-                        <li>
-                            <a type="button"
-                               class="btn__gld {{ $loop->first ? 'active' : '' }}"
-                               data-filter="{{ $type }}">
-                                {{ $categories[0]['title_ua'] ?? ucfirst($type) }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
 
-            {{-- Вивід категорій --}}
+    {{-- Фільтри по типах --}}
+    <div class="col-md-12 text-center" id="menu-filters">
+        <ul class="flex flex-wrap justify-center gap-3 px-4">
             @foreach($groupedMenu as $type => $categories)
-                <div class="menu-container grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 rounded-2xl shadow-md menu-category transition-all duration-300"
-                     data-category="{{ $type }}"
-                     style="{{ $loop->first ? '' : 'display: none;' }}">
-                    <x-menu-list :type="$type" :categories="$categories" />
-                </div>
+                <li>
+                    <a type="button"
+                       class="px-5 py-2 rounded-full font-semibold shadow-md transition
+                              {{ $loop->first ? 'bg-yellow-400 text-black active' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}"
+                       data-filter="{{ $type }}">
+                        {{ $categories[0]['title_ua'] ?? ucfirst($type) }}
+                    </a>
+                </li>
             @endforeach
+        </ul>
+    </div>
+
+    {{-- Вивід категорій --}}
+    @foreach($groupedMenu as $type => $categories)
+        <div class="menu-container grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-6
+                    menu-category transition-all duration-300"
+             data-category="{{ $type }}"
+             style="{{ $loop->first ? '' : 'display: none;' }}">
+            <x-menu-list :type="$type" :categories="$categories" />
+        </div>
+    @endforeach
 </section>
+

@@ -3,12 +3,12 @@
 @endphp
 
 @if($slideCount > 0)
-<section class="hero bg-black text-white relative">
+<section class="hero bg-black/70 text-green-900 relative">
     <div id="hero-slider" class="relative w-full overflow-hidden h-[520px] flex items-center justify-center">
 
         @foreach($slides as $index => $slide)
             <div class="slide {{ $index === 0 ? 'flex' : 'hidden' }} relative w-full h-full items-center justify-center px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-1 w-full max-w-2xl items-center justify-evenly">
                     <!-- Лівий блок (текст) -->
                     <div class="text-left space-y-4 z-10">
                         {{-- Назва --}}

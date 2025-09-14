@@ -36,9 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 {{-- Передаємо slides у компонент layout --}}
 <x-layout :slides="$slides">
-
-<x-line-img></x-line-img>
-    <div class="flex justify-center" style="background-image: url({{ asset('./images/drk_hero.webp') }}); border-top: solid 2px #ffb03b;">
+    <x-line-img></x-line-img>
+    <!-- <div class="absolute flex justify-end marb-35 mb-2 mx-auto">
+        <h2 class="relative inline-flex menu-title" style="bottom: 29px; right: calc(100% - 37%);">Меню</h2>
+    </div> -->
+    <x-title-menu></x-title-menu>
+    <div class="menu-container">
         @if(isset($groupedMenu) && $groupedMenu->isNotEmpty())
             <x-menu-box :groupedMenu="$groupedMenu" />
         @else
@@ -46,6 +49,5 @@ document.addEventListener("DOMContentLoaded", function () {
         @endif
     </div>
     <x-about></x-about>
-    <x-line-img></x-line-img>
-    <x-geo></x-geo>
+
 </x-layout>

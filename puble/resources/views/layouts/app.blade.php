@@ -5,7 +5,7 @@
     <title>@yield('title', 'Admin')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="">
     @yield('content')
 </body>
 </html>
